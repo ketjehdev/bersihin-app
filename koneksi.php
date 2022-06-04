@@ -4,5 +4,6 @@
 $conn = mysqli_connect('localhost', 'root', '', 'bersihin');
 
 if (!$conn) {
-    echo die('connection error');
+    echo 'connection error';
+    die();
 }
