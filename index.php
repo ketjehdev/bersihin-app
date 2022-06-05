@@ -13,11 +13,11 @@
 
 <body>
     <img src="./img/bg.jpg" alt="image background" class="bg">
-    <div class="content">
+    <div class="content" data-aos="fade" data-aos-duration="2000">
         <h1 class="text-center mb-4 mx-2">Nyuci lewat aplikasi? <br> Bisa dong! cuman di Bersih<span class="text-info">in</span>.</h1>
         <p class="text-center mt-1">
-            <button class="btn" style="width: 30%;">Login</button>
-            <button class="btn btn-info" style="width: 30%;">Daftar</button>
+            <a href="login.php" class="btn" style="width: 30%;">Login</a>
+            <a href="register.php" class="btn btn-info" style="width: 30%;">Daftar</a>
         </p>
     </div>
 </body>
