@@ -26,13 +26,13 @@ if (isset($_POST['submit'])) {
         if ($item['password'] == $password) {
             if ($item['role'] == "admin") {
                 $_SESSION["username"] = $item['username'];
-                $_SESSION["no_telpon"] = $item['no_telpon'];
+                $_SESSION["no_telepon"] = $item['no_telepon'];
                 $_SESSION["address"] = $item['address'];
                 $_SESSION["role"] = $item['role'];
                 header("Location: ./admin/index.php");
             } else {
                 $_SESSION["username"] = $item['username'];
-                $_SESSION["no_telpon"] = $item['no_telpon'];
+                $_SESSION["no_telepon"] = $item['no_telepon'];
                 $_SESSION["address"] = $item['address'];
                 $_SESSION["role"] = $item['role'];
                 header("Location: ./user/index.php");
@@ -96,7 +96,7 @@ if (isset($_POST['submit'])) {
                 <input type="password" class="form-control" required placeholder="Masukan password kamu" name="password">
 
                 <button class="btn btn-primary mt-4" style="width: 100%;" name="submit">Masuk</button>
-                <p class="text-center">Belum mempunyai akun? <br> <a href="daftar.php">daftar sekarang!</a></p>
+                <p class="text-center">Belum mempunyai akun? <br> <a href="register.php">daftar sekarang!</a></p>
             </form>
         </div>
     </div>
