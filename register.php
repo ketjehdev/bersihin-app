@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
             <img src="./img/logo.png" alt="" class="bg_forum">
             <h3 class="mt-4 mb-0 text-center">Register</h3>
 
-            <form action="" method="POST" style="width: 100%;" class="mx-2 mt-5">
+            <form data-aos="fade" data-aos-duration="1500" action="" method="POST" style="width: 100%;" class="mx-2 mt-5">
                 <span>Username <span class="text-danger">*</span></span>
                 <input type="text" autofocus class="form-control mb-4" required placeholder="Masukkan username kamu" name="username">
 
@@ -87,6 +87,16 @@ if (isset($_POST['submit'])) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <!-- end of script cdn bootstrap 5 -->
+
+    <!-- script AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- end of script AOS -->
+
+    <!-- function script AOS -->
+    <script>
+        AOS.init();
+    </script>
+    <!-- end of function script AOS -->
 </body>
 
 </html>

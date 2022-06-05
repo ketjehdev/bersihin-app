@@ -67,19 +67,15 @@ if (isset($_POST['submit'])) {
 
     <div class="banner d-flex" style="width: 100%; height: 100vh;">
 
-        <div class="col-7 box-img bg-primary">
-            <img src="./img/login2.jpg" alt="login.bg" class="bg">
+        <div class="col-8 box-img bg-primary">
+            <img src="./img/auth_log.jpg" alt="login.bg" class="bg">
         </div>
 
-        <div class="col-5 forum d-flex flex-column align-items-center">
+        <div class="col-4 forum d-flex flex-column align-items-center">
             <img src="./img/logo.png" alt="" class="bg_forum">
             <h3 class="mt-4 mb-0 text-center">Login</h3>
 
-            <?php if (isset($error)) : ?>
-                <span class="text-danger alert alert-danger mb-0">username atau password salah</span>
-            <?php endif; ?>
-
-            <form action="" method="POST" style="width: 100%;" class="mx-2 mt-5">
+            <form data-aos="fade" data-aos-duration="1500" action="" method="POST" style="width: 100%;" class="mx-2 mt-5">
 
                 <span>Username <span class="text-danger">*</span></span>
                 <input type="text" class="form-control mb-4" autofocus required placeholder="Masukan username kamu" name="username">
