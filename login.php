@@ -3,17 +3,9 @@ include 'koneksi.php';
 
 session_start();
 
-if (isset($_SESSION['username'])) {
-    if ($_SESSION['role'] == 'admin') {
-        header("Location: ./admin/index.php");
-    } else {
-        header("Location: ./user/index.php");
-    }
-}
-
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
     $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
 
