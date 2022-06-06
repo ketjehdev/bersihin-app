@@ -104,40 +104,36 @@ $result = mysqli_query($conn, 'SELECT * FROM rekap');
                 while ($data = mysqli_fetch_array($result)) {
                 ?>
 
-                    <a href="" style="text-decoration: none;">
-                        <div class="card mb-3">
-                            <div class="card-body d-flex p-3 justify-content-between alert-info">
-                                <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0"><?= $data['pemesan']; ?></h6>
-                                    <h6 class="mb-0">
-                                        <?php
-                                        if ($data['layanan'] == 'Bersihin Aja') {
-                                            echo "<span class='text-primary'>" . $data['layanan'] . "</span>";
-                                        } else {
-                                            echo "<span class='text-danger'>" . $data['layanan'] . "</span>";
-                                        }
-                                        ?>
-                                    </h6>
-                                </div>
+                    <?php if ($data['status'] == 'on progress') : ?>
+                        <a href="detail.php?id=<?= $data['id'] ?>" style="text-decoration: none;">
+                            <div class="card mb-3">
+                                <div class="card-body d-flex p-3 justify-content-between alert-info">
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0"><?= $data['pemesan']; ?></h6>
+                                        <h6 class="mb-0">
+                                            <?php
+                                            if ($data['layanan'] == 'Bersihin Aja') {
+                                                echo "<span class='text-primary'>" . $data['layanan'] . "</span>";
+                                            } else {
+                                                echo "<span class='text-danger'>" . $data['layanan'] . "</span>";
+                                            }
+                                            ?>
+                                        </h6>
+                                    </div>
 
-                                <div class="d-flex flex-column">
-                                    <h6 class="mb-0 text-success">Rp. <?= number_format($data['harga'], 0, ',', '.') ?></h6>
-                                    <h6 class="mb-0">
-                                        <?php
-                                        if ($data['status'] == 'on progress') {
-                                            echo "<span class='bg-warning px-2 text-light' style='border-radius:12px'>" . $data['status'] . "</span>";
-                                        } else {
-                                            echo "<span class='bg-success text-light px-2' style='border-radius:12px'>" . $data['status'] . "</span>";
-                                        }
-                                        ?>
-                                    </h6>
-                                    <?php date_default_timezone_set('Asia/Jakarta'); ?>
-                                    <h6 class="mb-0"><?= date('d M Y', strtotime($data['created_at'])); ?></h6>
+                                    <div class="d-flex flex-column">
+                                        <h6 class="mb-0 text-success">Rp. <?= number_format($data['harga'], 0, ',', '.') ?></h6>
+                                        <h6 class="mb-0">
+                                            <span class='bg-warning px-2 text-light' style='border-radius:12px'><?= $data['status']; ?></span>
+                                        </h6>
+                                        <?php date_default_timezone_set('Asia/Jakarta'); ?>
+                                        <h6 class="mb-0"><?= date('d M Y', strtotime($data['created_at'])); ?></h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </a>
+                        </a>
+                    <?php endif; ?>
                 <?php } ?>
             </div>
         </div>

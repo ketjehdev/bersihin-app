@@ -125,25 +125,19 @@ $result = mysqli_query($conn, 'SELECT * FROM rekap');
                                     <?php
                                     while ($data = mysqli_fetch_array($result)) {
                                     ?>
-                                        <tr style="white-space: nowrap;">
-                                            <td><?= $no++ . "." ?></td>
-                                            <td><?= $data['pemesan'] ?></td>
-                                            <td><?= $data['no_telepon'] ?></td>
-                                            <td><?= $data['layanan'] ?></td>
-                                            <td>Rp. <?= number_format($data['harga'], 0, ',', '.') ?></td>
-                                            <td><?= $data['berat'] ?></td>
-                                            <td><?= $data['address'] ?></td>
-                                            <td>
-                                                <?php
-                                                if ($data['status'] == 'on progress') {
-                                                    echo "<span class='bg-warning px-2' style='border-radius:12px'>" . $data['status'] . "</span>";
-                                                } else {
-                                                    echo "<span class='bg-success text-light px-2' style='border-radius:12px'>" . $data['status'] . "</span>";
-                                                }
-                                                ?>
-                                            </td>
-                                            <td><?= $data['created_at'] ?></td>
-                                        </tr>
+                                        <?php if ($data['status'] == 'done') : ?>
+                                            <tr style="white-space: nowrap;">
+                                                <td><?= $no++ . "." ?></td>
+                                                <td><?= $data['pemesan'] ?></td>
+                                                <td><?= $data['no_telepon'] ?></td>
+                                                <td><?= $data['layanan'] ?></td>
+                                                <td>Rp. <?= number_format($data['harga'], 0, ',', '.') ?></td>
+                                                <td><?= $data['berat'] ?></td>
+                                                <td><?= $data['address'] ?></td>
+                                                <td><span class='bg-success text-light px-2' style='border-radius:12px'><?= $data['status'] ?></span></td>
+                                                <td><?= $data['created_at'] ?></td>
+                                            </tr>
+                                        <?php endif; ?>
                                     <?php } ?>
                                 </tbody>
                             </table>
