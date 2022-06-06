@@ -24,10 +24,11 @@ if (isset($_POST['submit'])) {
     $layanan = $_POST['layanan'];
     $berat = $_POST['berat'];
     $address = $_POST['address'];
+    $harga = $_POST['harga'];
     $status = 'on progress';
 
-    $sql = "INSERT INTO rekap(pemesan, no_telepon, layanan, berat, address, status) 
-            VALUES('$pemesan', '$no_telepon', '$layanan', '$berat', '$address', '$status')";
+    $sql = "INSERT INTO rekap(pemesan, no_telepon, layanan, berat, address, harga, status) 
+            VALUES('$pemesan', '$no_telepon', '$layanan', '$berat', '$address', $harga, '$status')";
 
     $result = mysqli_query($conn, $sql);
 
@@ -95,7 +96,7 @@ if (isset($_POST['submit'])) {
                             ?>
 
                             <label for="address">Address :</label>
-                            <input type="text" name="address" class="form-control mb-2" id="address" readonly value="<?= $_SESSION['address'] ?>">
+                            <input type="text" name="address" class="form-control mb-2" id="address" value="<?= $_SESSION['address'] ?>">
 
                             <button type="submit" name="submit" class="btn btn-success mt-3" style="width: 100%;">Pesan</button>
                         </form>

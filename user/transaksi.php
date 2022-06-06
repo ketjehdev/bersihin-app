@@ -11,11 +11,6 @@ if ($_SESSION["role"] != "user") {
     header('Location:../index.php');
 }
 
-// sql select all data
-$sql = "SELECT * FROM menu";
-// query all data users with connection database
-$query = mysqli_query($conn, $sql);
-
 // sql select rekap
 $sql_menu = "SELECT * FROM rekap";
 // query all data users with connection database
@@ -31,7 +26,7 @@ $query_menu = mysqli_query($conn, $sql_menu);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Dashboard | Bersihin</title>
+    <title>Transaksi | Bersihin</title>
 </head>
 <style>
     nav {
@@ -67,14 +62,14 @@ $query_menu = mysqli_query($conn, $sql_menu);
     <nav>
         <div class="d-flex flex-column align-items-center" title="Home">
             <a href="./index.php">
-                <i data-feather="home" class="aktif"></i>
+                <i data-feather="home"></i>
             </a>
             <span style="font-size: 10px;">Home</span>
         </div>
 
         <div class="d-flex flex-column align-items-center" title="Home">
             <a href="./transaksi.php">
-                <i data-feather="file-text"></i>
+                <i data-feather="file-text" class="aktif"></i>
             </a>
             <span style="font-size: 10px;">Transaksi</span>
         </div>
@@ -99,44 +94,22 @@ $query_menu = mysqli_query($conn, $sql_menu);
 
         <div class="row p-3">
             <div class="col-12">
-                <h4>Dashboard</h4>
-                <div class="card mb-4">
-                    <div class="card-body d-flex justify-content-evenly">
-                        <?php
-                        while ($data = mysqli_fetch_array($query)) {
-                        ?>
-                            <div class="d-flex flex-column align-items-center">
-                                <a href="menu.php?nama_menu=<?= $data['nama_menu'] ?>">
-                                    <img src="../img/logo.png" style="width: 80px; height: 80px;">
-                                </a>
-                                <?php
-                                if ($data['nama_menu'] == 'Bersihin Aja') {
-                                    echo "<span class='px-3 mx-2 bg-primary text-light text-center' style='border-radius:12px'>" . $data['nama_menu'] . "</span>";
-                                } else if ($data['nama_menu'] == 'Bersihin Kilat') {
-                                    echo "<span class='px-3 mx-2 bg-danger text-light text-center' style='border-radius:12px'>" . $data['nama_menu'] . "</span>";
-                                }
-                                ?>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
+                <h4>Transaksi</h4>
 
                 <div class="card">
                     <div class="card-header d-flex p-3 justify-content-between alert-info">
-                        <h6 class="mb-0">History Transaksi</h6>
-                        <a href="./transaksi.php" style="text-decoration: none;">View All</a>
+                        <h6 class="mb-0">Transaksi kamu</h6>
                     </div>
-                    <div class="card-body mb-4">
+
+                    <div class="card-body mb-3">
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr class="text-center" style="white-space: nowrap;">
                                         <th>No.</th>
                                         <th>Layanan</th>
-                                        <th>Berat</th>
                                         <th>Harga</th>
-                                        <th>Address</th>
-                                        <th>Status</th>
+                                        <th>Dipesan Pada</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -145,20 +118,10 @@ $query_menu = mysqli_query($conn, $sql_menu);
                                     while ($data = mysqli_fetch_array($query_menu)) {
                                     ?>
                                         <tr class="text-center" style="white-space: nowrap;">
-                                            <td><?= $no++ . "."; ?></td>
+                                            <td><?= $no++ . "." ?></td>
                                             <td><?= $data['layanan'] ?></td>
-                                            <td><?= $data['berat'] ?></td>
                                             <td>Rp. <?= number_format($data['harga'], 0, ',', '.') ?></td>
-                                            <td><?= $data['address'] ?></td>
-                                            <td>
-                                                <?php
-                                                if ($data['status'] == 'on progress') {
-                                                    echo "<span class='bg-warning px-2' style='border-radius:12px'>" . $data['status'] . "</span>";
-                                                } else {
-                                                    echo "<span class='bg-success text-light px-2' style='border-radius:12px'>" . $data['status'] . "</span>";
-                                                }
-                                                ?>
-                                            </td>
+                                            <td><?= $data['created_at'] ?></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
