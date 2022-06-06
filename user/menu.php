@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
                             if ($nama_menu == 'Bersihin Aja') {
                                 echo '<input type="text" name="berat" class="form-control mb-2" id="berat" readonly value="< 5 KG">';
                             } else {
-                                echo '<input type="text" name="berat" class="form-control mb-2" id="berat" readonly value="< 10 KG">';
+                                echo '<input type="text" name="berat" class="form-control mb-2" id="berat" readonly value="> 5 KG">';
                             }
                             ?>
 
